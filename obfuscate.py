@@ -5,12 +5,9 @@ import logger as log
 #import json
 
 def obfuscate_code(data, enable, id=3):
-    # TODO
-    pass
-
+    coalgo(data, enable, id)
 
 def read_file(filename):
-    filename = input('Please input the path of filename which you want to obfuscate: ')
     f = open(filename)
     data = f.read()
     return data
@@ -32,4 +29,14 @@ def coalgo1(data, enable):
         if enable == True:
             # TODO: transfer i
             log.debug(i, enable)
+            if i == None:
+                log.show_msg(InputError)
 
+def coalgo2(data, enable):
+    # TODO: a --> -0_0, h --> -0_7, i --> -1_0, p --> -1_7
+    if data == None:
+        log.show_msg(NoDataInput)
+
+def coalgo3(data, enable):
+    # TODO
+    pass

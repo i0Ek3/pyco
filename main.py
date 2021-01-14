@@ -3,6 +3,8 @@
 
 import obfuscate as ob
 import deobfuscate as de
+import logger as log
+
 
 def main():
     hi = input("Which option you want to take? [ob or de]: ")
@@ -10,22 +12,37 @@ def main():
     if hi == 'ob':
         ctx = input("Which option you want to take? [code or file]: ")
         if ctx == 'code':
-            ob.obfuscate_code()
+            data = input('Please input the raw data: ')
+            if log.is_none(data):
+                log.show_msg(NoDataInput) 
+            else:
+                ob.obfuscate_code(data, True, 2)
         elif ctx == 'file':
-            ob.obfuscate_file()
+            filename = input('Please input the filename: ')
+            if log.is_none(filename):
+                log.show_msg(NoDataInput)
+            else:
+                ob.obfuscate_file(filename, True)
         else:
             print("Wrong input.")
     elif hi == 'de':
         ctx = input("Which option you want to take? [code or file]: ")
         if ctx == 'code':
-            de.deobfuscate_code()
+            data = input('Please input the encode data: ')
+            if log.is_none(data):
+                log.show_msg(NoDataInput) 
+            else:
+                de.deobfuscate_code(data, True)
         elif ctx == 'file':
-            de.deobfuscate_file()
+            filename = input('Please input the filename: ')
+            if log.is_none(filename):
+                log.show_msg(NoDataInput)
+            else:
+                de.deobfuscate_file(filename, True)
         else:
             print("Wrong input.")
     else:
         print("Wrong input.")
 
 
-if __name__ == '__main()__':
-    main()
+main()

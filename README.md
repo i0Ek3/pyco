@@ -12,7 +12,7 @@
 ## Usage
 
 ```Python
-$ cd pyco; pip install -r requirement.txt
+$ cd pyco
 $ python3 main.py
 ```
 
