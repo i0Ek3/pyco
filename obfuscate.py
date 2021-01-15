@@ -4,15 +4,15 @@
 import logger as log
 #import json
 
-def obfuscate_code(data, enable, id=3):
+def obfuscate_code(data, enable=False, id=3):
     coalgo(data, enable, id)
 
 def read_file(filename):
-    f = open(filename)
+    f = open(filename, 'r')
     data = f.read()
     return data
 
-def obfuscate_file(filename, enable, id=3):
+def obfuscate_file(filename, enable=False, id=3):
     data = read_file(filename)
     coalgo(data, enable, id)
     
@@ -24,7 +24,7 @@ def coalgo(data, enable, id):
     else:
         coalgo1(data, enable)
 
-def coalgo1(data, enable):
+def coalgo1(data, enable=False):
     for i in range(data):
         if enable == True:
             # TODO: transfer i
@@ -32,11 +32,11 @@ def coalgo1(data, enable):
             if i == None:
                 log.show_msg(InputError)
 
-def coalgo2(data, enable):
+def coalgo2(data, enable=False):
     # TODO: a --> -0_0, h --> -0_7, i --> -1_0, p --> -1_7
     if data == None:
         log.show_msg(NoDataInput)
 
-def coalgo3(data, enable):
+def coalgo3(data, enable=False):
     # TODO
     pass
