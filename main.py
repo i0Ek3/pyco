@@ -19,9 +19,7 @@ def main():
                 ob.obfuscate_code(data, True, 2)
         elif ctx == 'file':
             filename = input('Please input the filename: ')
-            if log.is_file_exist(filename):
-                log.show_msg(FileNotFoundError)
-            else:
+            if not log.file_check(filename):
                 ob.obfuscate_file(filename)
         else:
             print("Wrong input.")
@@ -35,9 +33,7 @@ def main():
                 de.deobfuscate_code(data)
         elif ctx == 'file':
             filename = input('Please input the filename: ')
-            if log.is_file_exist(filename):
-                log.show_msg(FileNotFoundError)
-            else:
+            if not log.file_check(filename):
                 de.deobfuscate_file(filename, True)
         else:
             print("Wrong input.")

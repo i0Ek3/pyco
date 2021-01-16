@@ -11,7 +11,7 @@ def get_key():
 
 def deobfuscate_code(encode, enable=False, id=3):
     if encode:
-        for k, v in encode:
+        for v in encode:
             if v == cmap[k]:
                 print(cmap[k])
                 if enable == True:
@@ -24,12 +24,9 @@ def deobfuscate_code(encode, enable=False, id=3):
         log.show_msg(NoDataInput)
 
 def deobfuscate_file(filename, enable=False, id=3):
-    if log.is_none(filename):
-        log.show_msg(NoDataInput)
-    else:
-        # TODO: decode the file then write into new file
-        # data = dealgo(filename, enable, id)
-        pass
+    # TODO: decode the file then write into new file
+    # data = dealgo(filename, enable, id)
+    pass
 
 def dealgo(filename, enable=False, id=3):
     pass

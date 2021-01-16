@@ -25,7 +25,9 @@ def is_none(str):
     if str:
         return False
 
-def is_file_exist(filename):
-    f = open(filename, 'r')
-    # TODO: find the error while read the data from the file
-    # f.read()
+def file_check(filename):
+    try:
+        f = open(filename, 'r')
+        data = f.read()
+    except IOError as e:
+        print(e)
