@@ -1,19 +1,19 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+import sys
+import os
+
 import logger as log
-#import json
+import err
+import utils as u
+
 
 def obfuscate_code(data, enable=False, id=3):
     coalgo(data, enable, id)
 
-def read_file(filename):
-    f = open(filename, 'r')
-    data = f.read()
-    return data
-
 def obfuscate_file(filename, enable=False, id=3):
-    data = read_file(filename)
+    data = u.read_file(filename)
     coalgo(data, enable, id)
     
 def coalgo(data, enable, id):
@@ -21,8 +21,11 @@ def coalgo(data, enable, id):
         coalgo3(data, enable)
     elif id == 2:
         coalgo2(data, enable)
-    else:
+    elif id == 1:
         coalgo1(data, enable)
+    else:
+        log.show_msg(err.FileNotFound)
+        sys.exit()
 
 def coalgo1(data, enable=False):
     for i in range(data):
@@ -30,12 +33,15 @@ def coalgo1(data, enable=False):
             # TODO: transfer i
             log.debug(i, enable)
             if i == None:
-                log.show_msg(InputError)
+                log.show_msg(err.InputError)
+        else:
+            # TODO: transfer i
+            pass
 
 def coalgo2(data, enable=False):
     # TODO: a --> -0_0, h --> -0_7, i --> -1_0, p --> -1_7
     if data == None:
-        log.show_msg(NoDataInput)
+        log.show_msg(err.NoDataInput)
 
 def coalgo3(data, enable=False):
     # TODO

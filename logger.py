@@ -1,33 +1,33 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-InputError = 'input_error'
-UnknownError = 'internal_error'
-NoDataInput = 'no_data_input'
+import os
+
+import err
 
 
 def debug(ret, enable=False):
     print("----> %s\n" % ret)
 
 def show_msg(type):
-    if type == InputError:
+    if type == err.InputError:
         print('Input error.')
-    elif type == UnknownError:
-        print('Internal error.')
-    elif type == NoDataInput:
+    elif type == err.UnknownError:
+        print('Unknown error.')
+    elif type == err.UnknownMode:
+        print('Unknown mode.')
+    elif type == err.NoDataInput:
         print('No data input.')
-    elif type == RuntimeError:
-        print('Runtime error.')
-    elif type == FileNotFoundError:
+    elif type == err.NoDataRead:
+        print('No data read.')
+    elif type == err.FileNotFound:
         print('File not found.')
 
 def is_none(str):
     if str:
         return False
+    else:
+        return True
 
 def file_check(filename):
-    try:
-        f = open(filename, 'r')
-        data = f.read()
-    except IOError as e:
-        print(e)
+    return os.path.exists(filename)

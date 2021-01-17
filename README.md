@@ -18,6 +18,10 @@ $ cd pyco
 $ python3 main.py
 ```
 
+## Issues
+
+- blank input issue
+
 ## License
 
 MIT.
