@@ -20,14 +20,14 @@ def deobfuscate_code(encode, enable=False, id=3):
         else:
             dealgo(encode, enable, id)
     else:
-        log.show_msg(err.NoDataInput)
+        u.helper(err.NoDataInput, False)
 
 def deobfuscate_file(filename, enable=False, id=3):
     data = u.read_file(filename)
     if data:
         dealgo(data, enable, id)
     else:
-        log.show_msg(err.NoDataRead)
+        u.helper(err.NoDataRead, False)
 
 def dealgo(data, enable, id):
     if id == 3:
@@ -37,8 +37,7 @@ def dealgo(data, enable, id):
     elif id == 1:
         dealgo1(data, enable)
     else:
-        log.show_msg(err.InputError)
-        sys.exit()
+        u.helper(err.InputError)
 
 def dealgo1(data, enable=False):
     pass
@@ -51,7 +50,7 @@ def dealgo3(data, enable=False):
         # TODO: transfer
         pass
     else:
-        log.show_msg(err.UnknownMode)
+        u.helper(err.UnknownMode, False)
 
 def is_standard_mode(data):
     # TODO: check data if belong to encode

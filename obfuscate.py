@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import sys
 import os
 
 import logger as log
@@ -24,8 +23,7 @@ def coalgo(data, enable, id):
     elif id == 1:
         coalgo1(data, enable)
     else:
-        log.show_msg(err.FileNotFound)
-        sys.exit()
+        u.helper(err.FileNotFound)
 
 def coalgo1(data, enable=False):
     for i in range(data):
@@ -33,7 +31,7 @@ def coalgo1(data, enable=False):
             # TODO: transfer i
             log.debug(i, enable)
             if i == None:
-                log.show_msg(err.InputError)
+                u.helper(err.InputError, False)
         else:
             # TODO: transfer i
             pass
@@ -41,7 +39,7 @@ def coalgo1(data, enable=False):
 def coalgo2(data, enable=False):
     # TODO: a --> -0_0, h --> -0_7, i --> -1_0, p --> -1_7
     if data == None:
-        log.show_msg(err.NoDataInput)
+        u.helper(err.NoDataInput, False)
 
 def coalgo3(data, enable=False):
     # TODO

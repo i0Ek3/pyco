@@ -7,21 +7,21 @@ import err
 
 
 def debug(ret, enable=False):
-    print("----> %s\n" % ret)
+    print("\033[32m----> %s\033[0m\n" % ret)
 
 def show_msg(type):
     if type == err.InputError:
-        print('Input error.')
+        print('\033[33mInput error!\033[0m')
     elif type == err.UnknownError:
-        print('Unknown error.')
+        print('\033[33mUnknonwn error!\033[0m')
     elif type == err.UnknownMode:
-        print('Unknown mode.')
+        print('\033[33mUnknown mode!\033[0m')
     elif type == err.NoDataInput:
-        print('No data input.')
+        print('\033[33mNo data input!\033[0m')
     elif type == err.NoDataRead:
-        print('No data read.')
+        print('\033[33mNo data read!\033[0m')
     elif type == err.FileNotFound:
-        print('File not found.')
+        print('\033[33mFile not found!\033[0m')
 
 def is_none(str):
     if str:

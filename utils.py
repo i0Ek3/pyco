@@ -15,17 +15,20 @@ def read_file(filename):
         data = f.read()
         f.close()
         if not data:
-            log.show_msg(err.NoDataRead)
-            sys.exit()
+            helper(err.NoDataRead)
         else:
             return data
     else:
-        log.show_msg(err.FileNotFound)
+        helper(err.FileNotFound, False)
 
 def blank_check(s):
     if s.isspace():
-        log.show_msg(err.DoNotInputBlank)
-        sys.exit()
+        helper(err.DoNotInputBlank)
     else:
         pass
+
+def helper(code, exit=True):
+    log.show_msg(code)
+    if exit:
+        sys.exit()
 
