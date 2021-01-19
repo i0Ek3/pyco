@@ -23,6 +23,14 @@ def deobfuscate_code(encode, enable=False, id=3):
         u.helper(err.NoDataInput, False)
 
 def deobfuscate_file(filename, enable=False, id=3):
+    if not u.is_python_file(filename):
+        answer = input('\033[31mWarning: %s is not Python file!\nWould you like to continue? [yes or no]\033[0m' % filename)
+        if answer == 'yes':
+            u.helper(err.MyOwnRisk, False)
+            pass
+        else:
+            u.helper(err.MyOwnRisk)
+
     data = u.read_file(filename)
     if data:
         dealgo(data, enable, id)

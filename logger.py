@@ -22,6 +22,8 @@ def show_msg(type):
         print('\033[33mNo data read!\033[0m')
     elif type == err.FileNotFound:
         print('\033[33mFile not found!\033[0m')
+    elif type == err.MyOwnRisk:
+        print('\033[33mMy own risk!\033[0m')
 
 def is_none(str):
     if str:

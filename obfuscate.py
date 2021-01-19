@@ -42,5 +42,7 @@ def coalgo2(data, enable=False):
         u.helper(err.NoDataInput, False)
 
 def coalgo3(data, enable=False):
-    # TODO
-    pass
+    filename = input('\033[32mSave result as a file? Please special a name: \033[0m')
+    u.processing_bar('\033[33mEncoding...\033[0m')
+    u.save_file(filename, data) 
+    print('\033[31mAll done, good job!\033[0m')
