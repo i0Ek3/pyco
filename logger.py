@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import os
-
 import err
 
 
-def debug(ret, enable=False):
-    print("\033[32m----> %s\033[0m\n" % ret)
+def debug(ret):
+    result = "\033[32mret ----> {}.\033[0m\n"
+    print(result.format(ret))
 
 def show_msg(type):
     if type == err.InputError:
@@ -24,12 +23,3 @@ def show_msg(type):
         print('\033[33mFile not found!\033[0m')
     elif type == err.MyOwnRisk:
         print('\033[33mMy own risk!\033[0m')
-
-def is_none(str):
-    if str:
-        return False
-    else:
-        return True
-
-def file_check(filename):
-    return os.path.exists(filename)

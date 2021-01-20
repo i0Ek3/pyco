@@ -2,8 +2,7 @@
 # coding=utf-8
 
 import sys
-#import string
-#import re
+import string
 
 import obfuscate as ob
 import deobfuscate as de
@@ -19,17 +18,19 @@ def main():
         ctx = input("\033[34mWhich option you want to take? [code or file]: \033[0m")
         if ctx == 'code':
             data = input('\033[32mPlease input the raw data: \033[0m')
-            if log.is_none(data):
+            if u.is_none(data):
                 u.helper(err.NoDataInput) 
             else:
-                # TODO: blank checking
-                # for x in data:
-                #    u.blank_check(x)
-                ob.obfuscate_code(data, True, 2)
+                newdata = data.replace(" ", "")
+                tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
+                enable = u.true_or_false(tof)
+                ob.obfuscate_code(newdata, enable, 3)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')
-            if log.file_check(filename):
-                ob.obfuscate_file(filename)
+            if u.file_check(filename):
+                tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
+                enable = u.true_or_false(tof)
+                ob.obfuscate_file(filename, enable)
             else:
                 u.helper(err.FileNotFound, False)
         else:
@@ -38,16 +39,19 @@ def main():
         ctx = input("\033[34mWhich option you want to take? [code or file]: \033[0m")
         if ctx == 'code':
             data = input('\033[32mPlease input the encode data: \033[0m')
-            if log.is_none(data):
+            if u.is_none(data):
                 u.helper(err.NoDataInput) 
-            elif data == ' ':
-                u.helper(err.DoNotInputBlank, False)
             else:
-                de.deobfuscate_code(data)
+                newdata = data.replace(" ", "")
+                tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
+                enable = u.true_or_false(tof)
+                de.deobfuscate_code(newdata, enable)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')
-            if log.file_check(filename):
-                de.deobfuscate_file(filename, True)
+            if u.file_check(filename):
+                tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
+                enable = u.true_or_false(tof)
+                de.deobfuscate_file(filename, enable)
             else:
                 u.helper(err.FileNotFound, False)
         else:

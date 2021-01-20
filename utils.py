@@ -25,12 +25,13 @@ def read_file(filename):
 def is_python_file(filename):
     f = open(filename, 'r')
     first_line = f.readline()
-    if '#!/usr/bin/env python' not in first_line:
+    astr = '#!/usr/bin/env python' 
+    if astr not in first_line:
         return False
     return True
 
 def save_file(filename, data):
-    f = open(filename, 'x')
+    f = open(filename, 'a')
     f.write(data)
     f.close()
 
@@ -52,3 +53,22 @@ def processing_bar(content):
         time.sleep(0.5)
         content = content[1:] + content[0]
         i = i + 1
+
+def is_none(data):
+    if data:
+        return False
+    return True
+
+def file_check(filename):
+    return os.path.exists(filename)
+
+def true_or_false(tof):
+    enable = False
+    if tof == "True":
+        enable = True
+    elif tof == "False":
+        enable =  False
+    else:
+        enable = False
+        helper(err.InputError)
+    return enable
