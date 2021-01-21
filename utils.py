@@ -36,7 +36,7 @@ def save_file(filename, data):
     f.close()
 
 def blank_check(s):
-    if s.isspace():
+    if s[0].isspace():
         helper(err.DoNotInputBlank)
     else:
         pass
@@ -63,12 +63,7 @@ def file_check(filename):
     return os.path.exists(filename)
 
 def true_or_false(tof):
-    enable = False
     if tof == "True":
-        enable = True
-    elif tof == "False":
-        enable =  False
+        return True
     else:
-        enable = False
-        helper(err.InputError)
-    return enable
+        return False

@@ -18,12 +18,13 @@ def main():
         ctx = input("\033[34mWhich option you want to take? [code or file]: \033[0m")
         if ctx == 'code':
             data = input('\033[32mPlease input the raw data: \033[0m')
+            u.blank_check(data)
             if u.is_none(data):
                 u.helper(err.NoDataInput) 
             else:
                 newdata = data.replace(" ", "")
                 tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
-                enable = u.true_or_false(tof)
+                enable = u.true_or_false(tof) == True
                 ob.obfuscate_code(newdata, enable, 3)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')
@@ -44,7 +45,7 @@ def main():
             else:
                 newdata = data.replace(" ", "")
                 tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
-                enable = u.true_or_false(tof)
+                enable = u.true_or_false(tof) == True
                 de.deobfuscate_code(newdata, enable)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')

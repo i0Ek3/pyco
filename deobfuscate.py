@@ -12,15 +12,13 @@ def get_key():
 
 def deobfuscate_code(encode, enable=False, id=3):
     if encode:
-        # TODO: transfer encode to decode
         if enable == True:
             dealgo(encode, enable, id)
-            # TODO: rewrite debug
-            log.debug(str(encode), enable)
+            log.debug(encode)
         else:
             dealgo(encode, enable, id)
     else:
-        u.helper(err.NoDataInput, False)
+        u.helper(err.NoDataInput, True)
 
 def deobfuscate_file(filename, enable=False, id=3):
     if not u.is_python_file(filename):

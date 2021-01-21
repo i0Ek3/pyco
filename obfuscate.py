@@ -46,19 +46,19 @@ def charmap(data):
     newer = [""] * c.NUMBER
     spec_list = ["_", "-"]
     for i in range(c.NUMBER):
-        newer[i] = spec_list[1] + str(i/8) + spec_list[0] + str(i%8)
+        newer[i] = spec_list[1] + str(i/c.BITNUM) + spec_list[0] + str(i%c.BITNUM)
     return newer
 
-# FIXME: wrong result here and cannot output the debug information
 def coalgo3(data, enable=False):
     filename = input('\033[32mSave result as a file? Please special a name: \033[0m')
     u.processing_bar('\033[33mEncoding...\033[0m')
     
+    # FIXME: wrong result here and cannot output the debug information
     newdata = charmap(data)
     for i in data:
         if i >= '97' and i <= '122':
-            n = i - 97
-            ret = newdata[n]
+            n = i - '97'
+            ret = newdata[int(n)]
             if enable == True:
                 log.debug(ret)
 
