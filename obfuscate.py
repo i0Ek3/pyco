@@ -42,7 +42,7 @@ def coalgo2(data, enable=False):
     if data == None:
         u.helper(err.NoDataInput, False)
 
-def charmap(data):
+def charmap():
     newer = [""] * c.NUMBER
     spec_list = ["_", "-"]
     for i in range(c.NUMBER):
@@ -53,17 +53,19 @@ def coalgo3(data, enable=False):
     filename = input('\033[32mSave result as a file? Please special a name: \033[0m')
     u.processing_bar('\033[33mEncoding...\033[0m')
     
-    # FIXME: wrong result here and cannot output the debug information
-    newdata = charmap(data)
-    for i in data:
-        if i >= '97' and i <= '122':
-            n = i - '97'
-            ret = newdata[int(n)]
+    ret = ''
+    mapset = charmap()
+    for j in data:
+        idx = ord(j)
+        if idx >= 97 and idx <= 122:
+            # FIXME: n cannot large than the size of mapset and wrong result output
+            n = idx - 97
+            ret += mapset[n]
             if enable == True:
                 log.debug(ret)
 
     newstr = ''
     for k in range(len(data)):
-        newstr += newdata[k]
+        newstr += mapset[k]
         u.save_file(filename, newstr) 
     print('\033[31mAll done, good job!\033[0m')
