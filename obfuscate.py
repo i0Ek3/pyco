@@ -27,20 +27,14 @@ def coalgo(data, enable, id):
         u.helper(err.FileNotFound)
 
 def coalgo1(data, enable=False):
-    for i in range(data):
-        if enable == True:
-            # TODO: transfer i
-            log.debug(i, enable)
-            if i == None:
-                u.helper(err.InputError, False)
-        else:
-            # TODO: transfer i
-            pass
-
-def coalgo2(data, enable=False):
-    # TODO: a --> -0_0, h --> -0_7, i --> -1_0, p --> -1_7
     if data == None:
         u.helper(err.NoDataInput, False)
+    # TODO: implement coalgo1
+
+def coalgo2(data, enable=False):
+    if data == None:
+        u.helper(err.NoDataInput, False)
+    # TODO: implement coalgo2
 
 def charmap():
     newer = [""] * c.NUMBER
