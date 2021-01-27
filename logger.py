@@ -6,7 +6,7 @@ import err
 
 def debug(ret):
     for i in range(len(ret)):
-        result = "\033[32mret ----> {}.\033[0m\n"
+        result = "\033[32m\nret ----> {}.\033[0m\n"
         print(result.format(ret[i]))
 
 def show_msg(type):

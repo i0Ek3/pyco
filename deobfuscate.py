@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+from numpy import random as rd
+
 import logger as log
 import err
 import utils as u
@@ -87,16 +89,27 @@ def dealgo3(data, enable=False):
             for j in range(sign, i+1):
                 ret += str(data[j])
             
-            logu() 
+            logu(enable) 
             for k, v in dict.items():
                 if ret == v:
                     res += str(k)
-                    logu()
+                    logu(enable)
                                     
-            logu()
+            logu(enable)
             sign += 4
             ret = ""
 
-def logu():
+    save_to_file(res)
+
+def logu(enable):
     if enable == "True": 
         log.debug(ret)
+
+def save_to_file(data):
+    rd.seed(1000)
+    name = "de_" + str(rd.randint(10000)) + ".txt"
+    f = open(name, "w")
+    f.write(data)
+    f.close()
+
+
