@@ -49,10 +49,21 @@ def main():
                 de.deobfuscate_code(newdata, enable)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')
+            if not u.is_python_file(filename):
+                answer = input('\033[31mWarning: %s is not Python file!\nWould you like to continue? [yes or no]\033[0m' % filename)
+                if answer == 'yes':
+            	    u.helper(err.YourOwnRisk, False)
+                else:
+            	    u.helper(err.SelfKilling)
+
             if u.file_check(filename):
                 tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
                 enable = u.true_or_false(tof)
-                de.deobfuscate_file(filename, enable)
+                save = input('\033[32mSave the result into file? [yes or no]: \033[0m')
+                if save == "yes": 
+                    de.deobfuscate_file(filename, enable, save)
+                else:
+                    de.deobfuscate_file(filename, enable)
             else:
                 u.helper(err.FileNotFound, False)
         else:

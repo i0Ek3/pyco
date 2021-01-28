@@ -8,30 +8,25 @@ import err
 import utils as u
 
 
-def deobfuscate_code(encode, enable=False, id=3):
+def deobfuscate_code(encode, enable, id=3):
     if encode:
         if enable == True:
             dealgo(encode, enable, id)
             log.debug(encode)
         else:
-            dealgo(encode, enable, id)
+            dealgo(encode, id)
     else:
-        u.helper(err.NoDataInput, True)
+        u.helper(err.FileIsEmpty)
 
-def deobfuscate_file(filename, enable=False, id=3):
-    if not u.is_python_file(filename):
-        answer = input('\033[31mWarning: %s is not Python file!\nWould you like to continue? [yes or no]\033[0m' % filename)
-        if answer == 'yes':
-            u.helper(err.MyOwnRisk, False)
-            pass
-        else:
-            u.helper(err.MyOwnRisk)
-
+def deobfuscate_file(filename, enable, save = 'no', id=3):
+    # FIXME: no data read from file
     data = u.read_file(filename)
-    if data:
-        dealgo(data, enable, id)
+    if data is not None:
+        res = dealgo3(data, enable)
+        if save == 'yes':
+            save_to_file(res)
     else:
-        u.helper(err.NoDataRead, False)
+        u.helper(err.NoDataRead)
 
 def dealgo(data, enable, id):
     if id == 3:
@@ -99,17 +94,20 @@ def dealgo3(data, enable=False):
             sign += 4
             ret = ""
 
-    save_to_file(res)
+    return res
 
 def logu(enable):
     if enable == "True": 
         log.debug(ret)
 
 def save_to_file(data):
-    rd.seed(1000)
-    name = "de_" + str(rd.randint(10000)) + ".txt"
-    f = open(name, "w")
-    f.write(data)
-    f.close()
+    if data:
+        rd.seed(1000)
+        name = "de_" + str(rd.randint(10000)) + ".txt"
+        f = open(name, "w")
+        f.write(data)
+        f.close()
+    else:
+        u.helper(err.NoDataRead)
 
 
