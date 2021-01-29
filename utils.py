@@ -15,12 +15,14 @@ def read_file(filename):
         f = open(filename, 'r')
         data = f.read()
         f.close()
-        if not data:
-            helper(err.NoDataRead)
-        else:
-            return data
-    else:
-        helper(err.FileNotFound, False)
+        
+        """
+        {debug}
+        log.line(20, '+')
+        print(data)
+        log.line(20, '+')
+        """
+        return data
 
 def is_python_file(filename):
     f = open(filename, 'r')

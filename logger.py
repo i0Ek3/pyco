@@ -30,3 +30,9 @@ def show_msg(type):
         print('\033[34mDo not input blank!\033[0m')
     elif type == err.SelfKilling:
         print('\033[34mSelf killing!\033[0m')
+
+def line(n, c):
+    s = ""
+    for i in range(n):
+        s += c
+    print(s)

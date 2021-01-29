@@ -18,10 +18,9 @@ def deobfuscate_code(encode, enable, id=3):
     else:
         u.helper(err.FileIsEmpty)
 
-def deobfuscate_file(filename, enable, save = 'no', id=3):
-    # FIXME: no data read from file
+def deobfuscate_file(filename, enable, save='no', id=3):
     data = u.read_file(filename)
-    if data is not None:
+    if data:
         res = dealgo3(data, enable)
         if save == 'yes':
             save_to_file(res)
@@ -104,10 +103,10 @@ def save_to_file(data):
     if data:
         rd.seed(1000)
         name = "de_" + str(rd.randint(10000)) + ".txt"
-        f = open(name, "w")
+        f = open(name, 'w')
         f.write(data)
         f.close()
     else:
-        u.helper(err.NoDataRead)
+        u.helper(err.FileWriteFailed)
 
 
