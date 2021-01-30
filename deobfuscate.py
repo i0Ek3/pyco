@@ -12,7 +12,6 @@ def deobfuscate_code(encode, enable, id=3):
     if encode:
         if enable == True:
             dealgo(encode, enable, id)
-            log.debug(encode)
         else:
             dealgo(encode, id)
     else:
@@ -23,7 +22,7 @@ def deobfuscate_file(filename, enable, save='no', id=3):
     if data:
         res = dealgo3(data, enable)
         if save == 'yes':
-            save_to_file(res)
+            u.save_to_file(res)
     else:
         u.helper(err.NoDataRead)
 
@@ -82,31 +81,15 @@ def dealgo3(data, enable=False):
         if (i + 1) % 4 == 0:
             for j in range(sign, i+1):
                 ret += str(data[j])
-            
-            logu(enable) 
+            u.logu(enable, ret) 
+
             for k, v in dict.items():
                 if ret == v:
                     res += str(k)
-                    logu(enable)
+                    u.logu(enable, k)
                                     
-            logu(enable)
+            u.logu(enable, res)
             sign += 4
             ret = ""
 
     return res
-
-def logu(enable):
-    if enable == "True": 
-        log.debug(ret)
-
-def save_to_file(data):
-    if data:
-        rd.seed(1000)
-        name = "de_" + str(rd.randint(10000)) + ".txt"
-        f = open(name, 'w')
-        f.write(data)
-        f.close()
-    else:
-        u.helper(err.FileWriteFailed)
-
-

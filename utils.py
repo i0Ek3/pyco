@@ -69,3 +69,17 @@ def true_or_false(tof):
         return True
     else:
         return False
+
+def logu(enable, ret):
+    if enable == True:
+        log.debug(ret)
+
+def save_to_file(data):
+    if data:
+        rd.seed(1000)
+        name = "de_" + str(rd.randint(10000)) + ".txt"
+        f = open(name, 'w')
+        f.write(data)
+        f.close()
+    else:
+        u.helper(err.NoDataRead)
