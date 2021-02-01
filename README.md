@@ -20,9 +20,7 @@ $ python3 main.py
 
 ## Issues
 
-- [ ] blank input issue
-- [ x ] deobfuscate cannot show the result
-- [ ] obfuscate cannot get the right result
+- blank input issue
 
 ## License
 

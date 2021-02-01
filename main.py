@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import sys
 import string
 
 import obfuscate as ob
 import deobfuscate as de
-import logger as log
 import err
 import utils as u
 
@@ -25,7 +23,7 @@ def main():
                 newdata = data.replace(" ", "")
                 tof = input('\033[32mWould you like enable debug mode? [True or False]: \033[0m')
                 enable = u.true_or_false(tof) == True
-                ob.obfuscate_code(newdata, enable, 3)
+                ob.obfuscate_code(newdata, enable)
         elif ctx == 'file':
             filename = input('\033[32mPlease input the filename: \033[0m')
             if u.file_check(filename):

@@ -1,48 +1,29 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-from numpy import random as rd
-
-import logger as log
 import err
 import utils as u
 
 
-def deobfuscate_code(encode, enable, id=3):
+def deobfuscate_code(encode, enable):
     if encode:
         if enable == True:
-            dealgo(encode, enable, id)
+            dealgo(encode, enable)
         else:
-            dealgo(encode, id)
+            dealgo(encode)
     else:
         u.helper(err.FileIsEmpty)
 
-def deobfuscate_file(filename, enable, save='no', id=3):
+def deobfuscate_file(filename, enable, save='no'):
     data = u.read_file(filename)
     if data:
-        res = dealgo3(data, enable)
+        res = dealgo(data, enable)
         if save == 'yes':
-            u.save_to_file(res)
+            u.save_to_file(res, filename)
     else:
         u.helper(err.NoDataRead)
 
-def dealgo(data, enable, id):
-    if id == 3:
-        dealgo3(data, enable)
-    elif id == 2:
-        dealgo2(data, enable)
-    elif id == 1:
-        dealgo1(data, enable)
-    else:
-        u.helper(err.InputError)
-
-def dealgo1(data, enable=False):
-    pass
-
-def dealgo2(data, enable=False):
-    pass
-
-def dealgo3(data, enable=False):
+def dealgo(data, enable=False):
     dict = {'a': "-0_0",
             'b': "-0_1",
             'c': "-0_2",
@@ -88,7 +69,6 @@ def dealgo3(data, enable=False):
                     res += str(k)
                     u.logu(enable, k)
                                     
-            u.logu(enable, res)
             sign += 4
             ret = ""
 
