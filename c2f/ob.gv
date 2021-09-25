@@ -1,0 +1,31 @@
+digraph G {
+concentrate=true;
+splines="ortho";
+rankdir="LR";
+subgraph legend{
+    rank = min;
+    label = "legend";
+    Legend [shape=none, margin=0, label = <
+        <table cellspacing="0" cellpadding="0" border="1"><tr><td>Code2flow Legend</td></tr><tr><td>
+        <table cellspacing="0">
+        <tr><td>Regular function</td><td width="50px" bgcolor='#cccccc'></td></tr>
+        <tr><td>Trunk function (nothing calls this)</td><td bgcolor='#966F33'></td></tr>
+        <tr><td>Leaf function (this calls nothing else)</td><td bgcolor='#6db33f'></td></tr>
+        <tr><td>Function call</td><td><font color='#cf142b'>&#8594;</font></td></tr>
+        </table></td></tr></table>
+        >];
+}node_739a5f14 [label="25: coalgo()" name="obfuscate::coalgo" shape="rect" style="rounded,filled" fillcolor="#cccccc" ];
+node_13f5bfdb [label="18: charmap()" name="obfuscate::charmap" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_e0f5a438 [label="14: obfuscate_file()" name="obfuscate::obfuscate_file" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_42440314 [label="11: obfuscate_code()" name="obfuscate::obfuscate_code" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_42440314 -> node_739a5f14 [color="#cf142b" penwidth="2"];
+node_e0f5a438 -> node_739a5f14 [color="#cf142b" penwidth="2"];
+node_739a5f14 -> node_13f5bfdb [color="#cf142b" penwidth="2"];
+subgraph cluster_e027de8f {
+    node_42440314 node_e0f5a438 node_13f5bfdb node_739a5f14;
+    label="File: obfuscate";
+    name="obfuscate";
+    style="filled";
+    graph[style=dotted];
+};
+}

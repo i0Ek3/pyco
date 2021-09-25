@@ -1,0 +1,29 @@
+digraph G {
+concentrate=true;
+splines="ortho";
+rankdir="LR";
+subgraph legend{
+    rank = min;
+    label = "legend";
+    Legend [shape=none, margin=0, label = <
+        <table cellspacing="0" cellpadding="0" border="1"><tr><td>Code2flow Legend</td></tr><tr><td>
+        <table cellspacing="0">
+        <tr><td>Regular function</td><td width="50px" bgcolor='#cccccc'></td></tr>
+        <tr><td>Trunk function (nothing calls this)</td><td bgcolor='#966F33'></td></tr>
+        <tr><td>Leaf function (this calls nothing else)</td><td bgcolor='#6db33f'></td></tr>
+        <tr><td>Function call</td><td><font color='#cf142b'>&#8594;</font></td></tr>
+        </table></td></tr></table>
+        >];
+}node_5f4d6fe0 [label="40: blank_check()" name="utils::blank_check" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_bef70c0b [label="77: save_to_file()" name="utils::save_to_file" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_9262aac8 [label="46: helper()" name="utils::helper" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_5f4d6fe0 -> node_9262aac8 [color="#cf142b" penwidth="2"];
+node_bef70c0b -> node_9262aac8 [color="#cf142b" penwidth="2"];
+subgraph cluster_168cc3db {
+    node_5f4d6fe0 node_9262aac8 node_bef70c0b;
+    label="File: utils";
+    name="utils";
+    style="filled";
+    graph[style=dotted];
+};
+}
